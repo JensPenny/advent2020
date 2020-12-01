@@ -16,5 +16,4 @@ export class FileReader {
     asStringList(data: string, separator: string): Array < string > {
         return data.split(separator)
     }
-
 }
