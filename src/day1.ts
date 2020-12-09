@@ -9,13 +9,13 @@ let testdata = `1721
 675
 1456`;
 
-let test = findPair(testdata);
+let test = findPair(testdata, 2020);
 console.log(test);
 
 //Day 1 A
 reader
   .read("./res/day1")
-  .then((data) => findPair(data))
+  .then((data) => findPair(data, 2020))
   .then((tuple) => {
     let value = tuple[0] * tuple[1];
     console.log('day 1 A: ' + value);
@@ -34,7 +34,7 @@ reader
 
 
 //Actual code, don't judge
-function findPair(data: string): [number, number] {
+export function findPair(data: string, tosearch: number): [number, number] {
   let values = reader.asStringList(data, "\n")
     .map((entry) => Number(entry));
 
@@ -50,11 +50,11 @@ function findPair(data: string): [number, number] {
     }
 
     for (let smallest of smallestFirst) {
-      if (largest + smallest === 2020) {
+      if (largest + smallest === tosearch) {
         tuple = [smallest, largest]
         break;
       }
-      if (largest + smallest > 2020) {
+      if (largest + smallest > tosearch) {
         break;
       }
     }
